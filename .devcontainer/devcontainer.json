@@ -6,15 +6,14 @@
 		// Sets the run context to one level up instead of the .devcontainer folder.
 		"context": "..",
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-		"dockerfile": "../Dockerfile"
-	},
-	"features": {
-		"ghcr.io/devcontainers/features/python:1": {
-			"installTools": true,
-			"version": "3.14.0"
+		"dockerfile": "../Dockerfile",
+		// Wire host-side credentials into the Docker build so the custom APT repo resolves.
+		"args": {
+			"ART_USER": "${localEnv:ART_USER}",
+			"ART_PASS": "${localEnv:ART_PASS}",
+			"ART_URL": "${localEnv:ART_URL}"
 		}
 	}
-
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
