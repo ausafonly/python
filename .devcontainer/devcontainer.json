@@ -1,31 +1,18 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
-	"name": "Existing Dockerfile",
-	"build": {
-		// Sets the run context to one level up instead of the .devcontainer folder.
-		"context": "..",
-		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-		"dockerfile": "../Dockerfile",
-		// Wire host-side credentials into the Docker build so the custom APT repo resolves.
-		"args": {
-			"ART_USER": "${localEnv:ART_USER}",
-			"ART_PASS": "${localEnv:ART_PASS}",
-			"ART_URL": "${localEnv:ART_URL}"
-		}
-	}
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+    "name": "Ubuntu Python Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+    // Features (optional)
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {}
+    },
 
-	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "cat /etc/os-release",
+    // Forward ports if needed
+    "forwardPorts": [],
 
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "devcontainer"
+    // Post-creation commands
+    "postCreateCommand": "python3 --version && pip3 --version"
 }
