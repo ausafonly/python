@@ -1,7 +1,7 @@
 {
     "name": "Ubuntu Python Dev Container",
     "build": {
-        "dockerfile": "Dockerfile",
+        "dockerfile": "../Dockerfile",
         "context": ".."
     },
 
